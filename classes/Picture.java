@@ -192,7 +192,9 @@ public class Picture extends SimplePicture
       }
     }
   }
+public void mirrorSeagull() {
 
+}
   /** Mirror just part of a picture of a temple */
   public void mirrorTemple()
   {
