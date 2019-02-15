@@ -5,7 +5,6 @@ import java.awt.image.BufferedImage;
 import java.text.*;
 import java.util.*;
 import java.util.List; // resolves problem with java.awt.List and java.util.List
-import package.com.gradescope;
 /**
  * A class that represents a picture.  This class inherits from 
  * SimplePicture and allows the student to add functionality to
@@ -219,22 +218,34 @@ public class Picture extends SimplePicture
   }
   public void mirrorArms()
   {
-    int mirrorPoint = 276;
+    int mirrorPoint = 169;
     int count = 0;
     Pixel leftPixel = null;
     Pixel rightPixel = null;
     Pixel[][] pixels = this.getPixels2D();
 
     // loop through the rows
-    for (int row = 27; row < 97; row++)
+    for (int row = 155; row < 193; row++)
     {
       // loop from 13 to just before the mirror point
-      for (int col = 13; col < mirrorPoint; col++)
+      for (int col = 105; col < mirrorPoint; col++)
       {
         count++;
         leftPixel = pixels[row][col];
-        rightPixel = pixels[row]
-                [mirrorPoint - col + mirrorPoint];
+        rightPixel = pixels[row + 30]
+                [col];
+        rightPixel.setColor(leftPixel.getColor());
+      }
+    }
+    for (int row2 = 170; row2 < 201; row2++)
+    {
+      // loop from 13 to just before the mirror point
+      for (int col2 = 236; col2 < 290; col2++)
+      {
+        count++;
+        leftPixel = pixels[row2][col2];
+        rightPixel = pixels[row2 + 30]
+                [col2];
         rightPixel.setColor(leftPixel.getColor());
       }
     }
