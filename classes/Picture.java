@@ -5,7 +5,7 @@ import java.awt.image.BufferedImage;
 import java.text.*;
 import java.util.*;
 import java.util.List; // resolves problem with java.awt.List and java.util.List
-
+import package.com.gradescope;
 /**
  * A class that represents a picture.  This class inherits from 
  * SimplePicture and allows the student to add functionality to
@@ -142,14 +142,64 @@ public class Picture extends SimplePicture
       }
     } 
   }
-  
+  public void mirrorHorizontal()
+  {
+    Pixel[][] pixels = this.getPixels2D();
+    Pixel topPixel = null;
+    Pixel bottomPixel = null;
+    int height = pixels.length;
+    for (int row = 0; row < pixels.length / 2; row++)
+    {
+      for (int col = 0; col < pixels[0].length; col++)
+      {
+        topPixel = pixels[row][col];
+        bottomPixel = pixels[height-1-row][col];
+        bottomPixel.setColor(topPixel.getColor());
+      }
+    }
+  }
+  public void mirrorHorizontalBotTop()
+  {
+    Pixel[][] pixels = this.getPixels2D();
+    Pixel topPixel = null;
+    Pixel bottomPixel = null;
+    int height = pixels.length;
+    for (int row = 0; row < pixels.length / 2; row++)
+    {
+      for (int col = 0; col < pixels[0].length; col++)
+      {
+        topPixel = pixels[height-1-row][col];
+        bottomPixel = pixels[row][col];
+        bottomPixel.setColor(topPixel.getColor());
+      }
+    }
+  }
+  public void mirrorDiagonal() {
+    Pixel[][] pixels = this.getPixels2D();
+    Pixel leftPixel = null;
+    Pixel rightPixel = null;
+    int maxLength;
+    if(pixels.length < pixels[0].length) {
+      maxLength = pixels.length;
+    } else {
+      maxLength = pixels[0].length;
+    }
+    for (int row = 0; row < maxLength; row++) {
+      for (int col = row; col < maxLength; col++) {
+        rightPixel = pixels[row][col];
+        leftPixel = pixels[col][row];
+        leftPixel.setColor(rightPixel.getColor());
+      }
+    }
+  }
+
   /** Mirror just part of a picture of a temple */
   public void mirrorTemple()
   {
     int mirrorPoint = 276;
+    int count = 0;
     Pixel leftPixel = null;
     Pixel rightPixel = null;
-    int count = 0;
     Pixel[][] pixels = this.getPixels2D();
     
     // loop through the rows
@@ -158,15 +208,39 @@ public class Picture extends SimplePicture
       // loop from 13 to just before the mirror point
       for (int col = 13; col < mirrorPoint; col++)
       {
-        
+        count++;
         leftPixel = pixels[row][col];      
         rightPixel = pixels[row]                       
                          [mirrorPoint - col + mirrorPoint];
         rightPixel.setColor(leftPixel.getColor());
       }
     }
+    System.out.print(count);
   }
-  
+  public void mirrorArms()
+  {
+    int mirrorPoint = 276;
+    int count = 0;
+    Pixel leftPixel = null;
+    Pixel rightPixel = null;
+    Pixel[][] pixels = this.getPixels2D();
+
+    // loop through the rows
+    for (int row = 27; row < 97; row++)
+    {
+      // loop from 13 to just before the mirror point
+      for (int col = 13; col < mirrorPoint; col++)
+      {
+        count++;
+        leftPixel = pixels[row][col];
+        rightPixel = pixels[row]
+                [mirrorPoint - col + mirrorPoint];
+        rightPixel.setColor(leftPixel.getColor());
+      }
+    }
+    System.out.print(count);
+  }
+
   /** copy from the passed fromPic to the
     * specified startRow and startCol in the
     * current picture
