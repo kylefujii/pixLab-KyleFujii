@@ -1,4 +1,4 @@
-//package com.gradescope.pixlab;
+package com.gradescope.pixlab;
 import java.awt.*;
 import java.awt.font.*;
 import java.awt.geom.*;
@@ -97,7 +97,7 @@ public class Picture extends SimplePicture
       }
     }
   }
-  public void onlyBlue()
+  public void keepOnlyBlue()
   {
     Pixel[][] pixels = this.getPixels2D();
     for (Pixel[] rowArray : pixels)
@@ -161,7 +161,13 @@ public class Picture extends SimplePicture
       }
     }
   }
-  public void mirrorHorizontalBotTop()
+  public void fixUnderwater() {
+
+  }
+  public void grayscale() {
+
+  }
+  public void mirrorHorizontalBotToTop()
   {
     Pixel[][] pixels = this.getPixels2D();
     Pixel topPixel = null;
