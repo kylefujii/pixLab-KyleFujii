@@ -1,4 +1,4 @@
-package com.gradescope.pixlab;
+//package com.gradescope.pixlab;
 import java.awt.*;
 import java.awt.font.*;
 import java.awt.geom.*;
@@ -142,6 +142,9 @@ public class Picture extends SimplePicture
       }
     } 
   }
+  public void mirrorGull() {
+
+  }
   public void mirrorHorizontal()
   {
     Pixel[][] pixels = this.getPixels2D();
@@ -193,7 +196,38 @@ public class Picture extends SimplePicture
     }
   }
 public void mirrorSeagull() {
+  int mirrorPoint = 341;
+  int count = 0;
+  Pixel leftPixel = null;
+  Pixel rightPixel = null;
+  Pixel[][] pixels = this.getPixels2D();
 
+  // loop through the rows
+  for (int row = 233; row < 325; row++)
+  {
+    // loop from 13 to just before the mirror point
+    for (int col = 227; col < mirrorPoint; col++)
+    {
+      count++;
+      leftPixel = pixels[row][col];
+      rightPixel = pixels[row + 100]
+              [col+100];
+      rightPixel.setColor(leftPixel.getColor());
+    }
+  }
+  for (int row2 = 170; row2 < 201; row2++)
+  {
+    // loop from 13 to just before the mirror point
+    for (int col2 = 236; col2 < 290; col2++)
+    {
+      count++;
+      leftPixel = pixels[row2][col2];
+      rightPixel = pixels[row2 + 30]
+              [col2];
+      rightPixel.setColor(leftPixel.getColor());
+    }
+  }
+  System.out.print(count);
 }
   /** Mirror just part of a picture of a temple */
   public void mirrorTemple()
