@@ -22,7 +22,7 @@ public class PictureTester
   public static void testKeepOnlyBlue() {
     Picture beach = new Picture("images/beach.jpg");
     beach.explore();
-    beach.onlyBlue();
+    beach.keepOnlyBlue();
     beach.explore();
 
   }
@@ -46,6 +46,12 @@ public class PictureTester
     caterpillar.mirrorHorizontal();
     caterpillar.explore();
   }
+  public static void testMirrorGull()
+  {
+    Picture caterpillar = new Picture("images/seagull.jpg");
+    caterpillar.mirrorSeagull();
+    caterpillar.explore();
+  }
   public static void testMirrorDiagonal()
   {
     Picture caterpillar = new Picture("images/caterpillar.jpg");
@@ -55,7 +61,7 @@ public class PictureTester
   public static void testMirrorHorizontalBotTop()
   {
     Picture caterpillar = new Picture("images/caterpillar.jpg");
-    caterpillar.mirrorHorizontalBotTop();
+    caterpillar.mirrorHorizontalBotToTop();
     caterpillar.explore();
   }
   /** Method to test mirrorTemple */
@@ -109,7 +115,7 @@ public class PictureTester
    // testMirrorHorizontalBotTop();
     //testMirrorTemple();
    // testMirrorDiagonal();
-    testMirrorArms();
+   // testMirrorArms();
     //testMirrorGull();
     //testMirrorDiagonal();
     //testCollage();
@@ -122,5 +128,6 @@ public class PictureTester
     //testSetRedToHalfValueInTopHalf();
     //testClearBlueOverValue(200);
     //testGetAverageForColumn(0);
+    testMirrorGull();
   }
 }
